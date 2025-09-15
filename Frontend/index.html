@@ -7,41 +7,77 @@
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
+  <!-- Header -->
   <header>
-    <h1>Welcome to My Website</h1>
-    <nav>
-      <a href="#home">Home</a>
-      <a href="#about">About</a>
-      <a href="#contact">Contact</a>
-    </nav>
+    <div class="container header-content">
+      <h1 class="logo">MyWebsite</h1>
+      <nav>
+        <ul class="nav-links">
+          <li><a href="#home">Home</a></li>
+          <li><a href="#about">About</a></li>
+          <li><a href="#services">Services</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </nav>
+    </div>
   </header>
 
-  <main>
-    <section id="home">
-      <h2>Home</h2>
-      <p>This is the homepage content.</p>
-    </section>
+  <!-- Hero Section -->
+  <section id="home" class="hero">
+    <div class="container hero-text">
+      <h2>Welcome to My Website</h2>
+      <p>A modern, responsive frontend example for laptops & desktops.</p>
+      <a href="#services" class="btn">Explore Services</a>
+    </div>
+  </section>
 
-    <section id="about">
-      <h2>About</h2>
-      <p>Some info about the site or yourself.</p>
-    </section>
+  <!-- About Section -->
+  <section id="about" class="section">
+    <div class="container">
+      <h2>About Us</h2>
+      <p>We create modern, professional websites with clean design and responsive layouts. This is just a sample frontend built with HTML, CSS, and a little JavaScript.</p>
+    </div>
+  </section>
 
-    <section id="contact">
-      <h2>Contact</h2>
+  <!-- Services Section -->
+  <section id="services" class="section services">
+    <div class="container">
+      <h2>Our Services</h2>
+      <div class="grid">
+        <div class="card">
+          <h3>Web Design</h3>
+          <p>Clean, modern, and user-friendly website designs optimized for desktop & laptop users.</p>
+        </div>
+        <div class="card">
+          <h3>Development</h3>
+          <p>High-quality development with best practices to ensure performance and scalability.</p>
+        </div>
+        <div class="card">
+          <h3>Support</h3>
+          <p>Reliable support to keep your website running smoothly after launch.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact Section -->
+  <section id="contact" class="section contact">
+    <div class="container">
+      <h2>Contact Us</h2>
       <form>
-        <input type="text" placeholder="Your Name">
-        <input type="email" placeholder="Your Email">
-        <textarea placeholder="Your Message"></textarea>
-        <button type="submit">Send</button>
+        <input type="text" placeholder="Your Name" required>
+        <input type="email" placeholder="Your Email" required>
+        <textarea placeholder="Your Message" required></textarea>
+        <button type="submit" class="btn">Send Message</button>
       </form>
-    </section>
-  </main>
+    </div>
+  </section>
 
+  <!-- Footer -->
   <footer>
-    <p>© 2025 My Website</p>
+    <div class="container">
+      <p>© 2025 MyWebsite. All rights reserved.</p>
+    </div>
   </footer>
-
-  <script src="script.js"></script>
 </body>
 </html>

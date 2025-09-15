@@ -1,29 +1,154 @@
-body {
-  font-family: Arial, sans-serif;
+/* Reset some defaults */
+* {
   margin: 0;
   padding: 0;
+  box-sizing: border-box;
 }
 
+body {
+  font-family: "Segoe UI", Arial, sans-serif;
+  line-height: 1.6;
+  color: #333;
+}
+
+/* Container for layout alignment */
+.container {
+  width: 90%;
+  max-width: 1200px;
+  margin: auto;
+}
+
+/* Header */
 header {
-  background: #333;
+  background: #222;
   color: white;
-  padding: 1rem;
+  padding: 1rem 0;
 }
 
-nav a {
-  color: white;
-  margin: 0 1rem;
+.header-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logo {
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+
+.nav-links {
+  list-style: none;
+  display: flex;
+}
+
+.nav-links li {
+  margin-left: 1.5rem;
+}
+
+.nav-links a {
   text-decoration: none;
+  color: white;
+  font-weight: 500;
+  transition: color 0.3s ease;
 }
 
-section {
+.nav-links a:hover {
+  color: #f4a261;
+}
+
+/* Hero Section */
+.hero {
+  background: url("https://picsum.photos/1600/600?blur") no-repeat center center/cover;
+  color: white;
+  height: 70vh;
+  display: flex;
+  align-items: center;
+}
+
+.hero-text {
+  max-width: 600px;
+}
+
+.hero h2 {
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+}
+
+.hero p {
+  font-size: 1.2rem;
+  margin-bottom: 1.5rem;
+}
+
+.btn {
+  display: inline-block;
+  background: #f4a261;
+  color: white;
+  padding: 0.75rem 1.5rem;
+  text-decoration: none;
+  border-radius: 5px;
+  transition: background 0.3s ease;
+}
+
+.btn:hover {
+  background: #e76f51;
+}
+
+/* Sections */
+.section {
+  padding: 4rem 0;
+  text-align: center;
+}
+
+.section h2 {
+  margin-bottom: 1.5rem;
+  font-size: 2rem;
+  color: #222;
+}
+
+/* Services Grid */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2rem;
+  margin-top: 2rem;
+}
+
+.card {
+  background: #fafafa;
   padding: 2rem;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+  transition: transform 0.2s ease;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+}
+
+/* Contact Form */
+form {
+  max-width: 500px;
+  margin: auto;
+  display: flex;
+  flex-direction: column;
 }
 
 form input, form textarea {
-  display: block;
   margin: 0.5rem 0;
-  padding: 0.5rem;
-  width: 100%;
-  max-width: 400px;
+  padding: 0.75rem;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+form button {
+  margin-top: 1rem;
+}
+
+/* Footer */
+footer {
+  background: #222;
+  color: white;
+  text-align: center;
+  padding: 1rem 0;
+  margin-top: 2rem;
 }
