@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Teachers</title>
+    <style>
+        body { font-family: Arial, sans-serif; padding: 20px; }
+        h1 { text-align: center; margin-bottom: 30px; }
+        table { width: 80%; margin: 0 auto; border-collapse: collapse; box-shadow: 0 2px 5px rgba(0,0,0,0.1); }
+        th, td { padding: 12px 15px; border: 1px solid #ddd; text-align: left; }
+        th { background-color: #4CAF50; color: white; }
+        tr:nth-child(even) { background-color: #f9f9f9; }
+        tr:hover { background-color: #f1f1f1; }
+        table caption { caption-side: top; font-size: 1.5em; margin-bottom: 10px; }
+    </style>
+</head>
+<body>
+    <h1>Teachers List</h1>
+    <table>
+        <caption>All Teachers</caption>
+        <tr>
+            <th>ID</th>
+            <th>Period 1</th>
+            <th>Period 2</th>
+            <th>Period 3</th>
+            <th>Period 4</th>
+            <th>Period 5</th>
+            <th>Period 6</th>
+            <th>Period 7</th>
+            <th>Period 8</th>
+            <th>Period 9</th>
+        </tr>
+        {% for teacher in teachers %}
+        <tr>
+            <td>{{ teacher.id }}</td>
+            <td>{{ teacher["Period 1"] }}</td>
+            <td>{{ teacher["Period 2"] }}</td>
+            <td>{{ teacher["Period 3"] }}</td>
+            <td>{{ teacher["Period 4"] }}</td>
+            <td>{{ teacher["Period 5"]}}</td>
+            <td>{{ teacher["Period 6"] }}</td>
+            <td>{{ teacher["Period 7"] }}</td>
+            <td>{{ teacher["Period 8"] }}</td>
+            <td>{{ teacher["Period 9"] }}</td>
+        </tr>
+       {% endfor %}
+    </table>
+</body>
+</html>

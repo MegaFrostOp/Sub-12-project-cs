@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Add Free Periods</title>
+    <style>
+        body { font-family: Arial, sans-serif; padding: 50px; }
+        h1 { text-align: center; margin-bottom: 30px; }
+        form { width: 450px; margin: 0 auto; }
+        input[type="text"] { width: 100%; padding: 10px; margin-bottom: 15px; border-radius: 5px; border: 1px solid #ccc; }
+        input[type="submit"] { padding: 10px 20px; border: none; border-radius: 5px; background-color: #4CAF50; color: white; font-size: 16px; cursor: pointer; }
+        input[type="submit"]:hover { background-color: #45a049; }
+
+        select {
+            padding: 5px;
+            font-size: 14px;
+            margin-bottom: 20px;
+        }
+
+        .teacher-box {
+            display: inline-block;
+            background-color: #4CAF50;
+            color: rgb(224, 214, 214);
+            padding: 10px 15px;
+            margin: 5px;
+            border-radius: 50px;
+            font-weight: bold;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+        }
+    </style>
+</head>
+<body>
+    <h1>Enter Your Free Periods</h1>
+    
+    {% if message %}
+        <div class="message {{ message_type }}">
+            {{ message }}
+        </div>
+    {% endif %}
+    
+    
+    <form method="POST">
+        Name: <input type="text" name="name" required placeholder="Your Name">
+    <form method="POST">
+        Name: <input type="text" name="id" required placeholder="Your Id">
+
+        Period 1:
+        <select name="period1">
+            <option value="">Busy</option>
+            <option value="Free">Free</option>
+        </select>
+
+        Period 2:
+        <select name="period2">
+            <option value="">Busy</option>
+            <option value="Free">Free</option>
+        </select>
+        Period 3:
+        <select name="period3">
+            <option value="">Busy</option>
+            <option value="Free">Free</option>
+        </select>
+        Period 4:
+        <select name="period4">
+            <option value="">Busy</option>
+            <option value="Free">Free</option>
+        </select>
+        Period 5:
+        <select name="period5">
+            <option value="">Busy</option>
+            <option value="Free">Free</option>
+        </select>
+        Period 6:
+        <select name="period6">
+            <option value="">Busy</option>
+            <option value="Free">Free</option>
+        </select>
+        Period 7:
+        <select name="period7">
+            <option value="">Busy</option>
+            <option value="Free">Free</option>
+        </select>
+        Period 8:
+        <select name="period8">
+            <option value="">Busy</option>
+            <option value="Free">Free</option>
+        </select>
+        Period 9:
+        <select name="period9">
+            <option value="">Busy</option>
+            <option value="Free">Free</option>
+        </select>
+
+        <input type="submit" value="Submit">
+    </form>
+</body>
+</html>
