@@ -25,6 +25,7 @@ def get_teachers():
         teachers = [dict(row) for row in result.mappings().all()]
         return render_template("teachers.html", teachers=teachers)
     except Exception as e:
+        session.rollback()
         return f"DB connection error: {e}"
 
 
@@ -55,7 +56,7 @@ def add_free_period():
                 session.execute(
                     text(
                         'INSERT INTO teachersmondayfree ("id", "Period 1", "Period 2", "Period 3", "Period 4", "Period 5", "Period 6", "Period 7", "Period 8", "Period 9") '
-                        'VALUES (:p1, :p2, :p3, :p4, :p5, :p6, :p7, :p8, :p9)'
+                        'VALUES (:id, :p1, :p2, :p3, :p4, :p5, :p6, :p7, :p8, :p9)'
                     ),
                     {
                         "id":teach_id, "p1": period1, "p2": period2, "p3": period3,
@@ -72,6 +73,14 @@ def add_free_period():
     
     return render_template("teachersadd.html", message=message, message_type=message_type)
 
+@app.route("/teacherstimetable")
+def get_teacherstimetable():
+    try:
+        result = session.execute(text("SELECT * FROM Teacherstimetable;"))  # Replace 'teachers' with your table name
+        teachers = [dict(row) for row in result.mappings().all()]
+        return render_template("teachers.html", teachers=teachers)
+    except Exception as e:
+        return f"DB connection error: {e}"
 
 
 if __name__ == '__main__':
