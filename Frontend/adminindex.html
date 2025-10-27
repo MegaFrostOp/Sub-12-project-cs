@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>School Dashboard</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #f7f7f7;
+    }
+
+    /* Navbar styles */
+    header {
+      background-color: #333;
+      color: #fff;
+      padding: 15px 0;
+      position: sticky; /* stays visible when scrolling */
+      top: 0;
+      z-index: 1000;
+    }
+
+    nav {
+      display: flex;
+      justify-content: center;
+      gap: 30px;
+    }
+
+    nav a {
+      color: #fff;
+      text-decoration: none;
+      font-size: 18px;
+      transition: color 0.3s;
+    }
+
+    nav a:hover {
+      color: #4CAF50;
+    }
+
+    /* Main content */
+    main {
+      text-align: center;
+      padding: 50px 20px;
+    }
+
+    h1 {
+      margin-bottom: 40px;
+      color: #333;
+    }
+
+    .button {
+      display: inline-block;
+      padding: 15px 30px;
+      font-size: 18px;
+      background-color: #4CAF50;
+      color: white;
+      text-decoration: none;
+      border-radius: 8px;
+      transition: background-color 0.3s;
+      margin: 10px;
+    }
+
+    .button:hover {
+      background-color: #45a049;
+    }
+  </style>
+</head>
+<body>
+  <!-- Fixed navbar -->
+  <header>
+    {% include 'navbar.html' %}
+  </header>
+
+  <!-- Page-specific content -->
+  <main>
+    <h1>Welcome to the School Dashboard (ADMIN)</h1>
+  </main>
+</body>
+</html>

@@ -69,18 +69,12 @@
 <body>
   <!-- Fixed navbar -->
   <header>
-    <nav>
-      <a href="/">Home</a>
-      <a href="/teachers">View Teachers Table</a>
-      <a href="/teachersadd">Add Free Periods</a>
-    </nav>
+    {% include 'navbar.html' %}
   </header>
 
   <!-- Page-specific content -->
   <main>
     <h1>Welcome to the School Dashboard</h1>
-    <a class="button" href="/teachers">View Teachers Table</a>
-    <a class="button" href="/teachersadd">Add Your Free Periods</a>
   </main>
 </body>
 </html>

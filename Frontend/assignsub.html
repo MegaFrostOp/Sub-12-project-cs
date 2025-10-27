@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" href="navbar.css">
+    <meta charset="UTF-8">
+    <title>Assign Substitution</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f5f7fa;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            width: 80%;
+            margin: 40px auto;
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 0 8px rgba(0,0,0,0.1);
+        }
+        h2 {
+            text-align: center;
+            color: #003366;
+        }
+        form {
+            margin-top: 20px;
+        }
+        label {
+            font-weight: bold;
+        }
+        select, button {
+            width: 100%;
+            padding: 8px;
+            margin-top: 5px;
+            margin-bottom: 15px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+        }
+        button {
+            background-color: #003366;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #00264d;
+        }
+        .period-row {
+            display: flex;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+        .period-row label {
+            width: 120px;
+        }
+        .period-row select {
+            flex: 1;
+        }
+    </style>
+</head>
+<body>
+
+    {% include 'navbar.html' %}
+
+    <div class="container">
+        <h2>Assign Substitution</h2>
+        <form method="POST" action="{{ url_for('assign_teacher') }}">
+            
+            <label for="absent_teacher">Absent Teacher:</label>
+            <select id="absent_teacher" name="absent_teacher">
+                {% for teacher in teacher_list %}
+                    <option value="{{ teacher }}">{{ teacher }}</option>
+                {% endfor %}
+            </select>
+
+            <label for="date">Select Date:</label>
+            <input type="date" id="date" name="date" value="{{ selected_date }}" required>
+
+            <button type="submit" name="view_teachers">View Free Teachers</button>
+
+            <hr>
+
+            <h3>Assign Free Teachers:</h3>
+
+            {% for period, teachers in free_teachers_by_period.items() %}
+                <div class="period-row">
+                    <label>Period {{ period }}:</label>
+                    <select name="period{{ period }}">
+                        <option>-- Select Substitute --</option>
+                        {% for teacher in teachers %}
+                            <option value="{{ teacher }}">{{ teacher }}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+            {% endfor %}
+
+            <button type="submit" name="send_emails">Send Email</button>
+        </form>
+    </div>
+</body>
+</html>
