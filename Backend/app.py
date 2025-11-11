@@ -293,6 +293,18 @@ def assign_teacher():
     )
 
 
+@app.route('/confirm_teacher', methods=['POST'])
+def confirm_teacher():
+    teacher = request.form.get('absent_teacher')
+    session['confirmed_teacher'] = teacher
+    return redirect(url_for('assign_teacher'))
+
+@app.route('/unconfirm_teacher')
+def unconfirm_teacher():
+    session.pop('confirmed_teacher', None)
+    return redirect(url_for('assign_teacher'))
+
+
 
 
 

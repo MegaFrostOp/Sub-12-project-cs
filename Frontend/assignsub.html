@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <link rel="stylesheet" href="navbar.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='navbar.css') }}">
     <meta charset="UTF-8">
     <title>Assign Substitution</title>
     <style>
@@ -60,13 +60,16 @@
     </style>
 </head>
 <body>
+{% include 'navbar.html' %}
 
-    {% include 'navbar.html' %}
+<div class="container">
+    <h2>Assign Substitution</h2>
 
-    <div class="container">
-        <h2>Assign Substitution</h2>
-        <form method="POST" action="{{ url_for('assign_teacher') }}">
-            
+    <form method="POST" action="{{ url_for('assign_teacher') }}">
+        {% if session.get('confirmed_teacher') %}
+            <p><strong>Absent:</strong> {{ session.get('confirmed_teacher') }}</p>
+            <a href="{{ url_for('unconfirm_teacher') }}">Change Teacher</a>
+        {% else %}
             <label for="absent_teacher">Absent Teacher:</label>
             <select id="absent_teacher" name="absent_teacher">
                 {% for teacher in teacher_list %}
@@ -74,13 +77,20 @@
                 {% endfor %}
             </select>
 
+            <label>
+                <input type="checkbox" id="confirm_teacher" name="confirm_teacher" required>
+                Confirm Teacher
+            </label>
+
+            <br><br>
             <label for="date">Select Date:</label>
             <input type="date" id="date" name="date" value="{{ selected_date }}" required>
 
-            <button type="submit" name="view_teachers">View Free Teachers</button>
+            <button type="submit" name="confirm_teacher_btn">Confirm</button>
+        {% endif %}
 
+        {% if confirm_teacher_btn %}
             <hr>
-
             <h3>Assign Free Teachers:</h3>
 
             {% for period, teachers in free_teachers_by_period.items() %}
@@ -96,7 +106,11 @@
             {% endfor %}
 
             <button type="submit" name="send_emails">Send Email</button>
-        </form>
-    </div>
+        {% endif %}
+    </form>
+
+
+</div>
+
 </body>
 </html>
