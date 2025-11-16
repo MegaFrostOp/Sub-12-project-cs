@@ -29,7 +29,7 @@
         label {
             font-weight: bold;
         }
-        select, button, input[type="date"] {
+        select, button {
             width: 100%;
             padding: 8px;
             margin-top: 5px;
@@ -46,7 +46,18 @@
         button:hover {
             background-color: #00264d;
         }
-                    .flash-container {
+        .period-row {
+            display: flex;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+        .period-row label {
+            width: 120px;
+        }
+        .period-row select {
+            flex: 1;
+        }
+            .flash-container {
         position: fixed;
         bottom: 20px;
         right: 20px;
@@ -73,47 +84,26 @@
 </head>
 <body>
 {% include 'navbar.html' %}
-{% with messages = get_flashed_messages(with_categories=true) %}
-  {% if messages %}
-    <div class="flash-container">
-      {% for category, message in messages %}
-        <div class="flash-message {{ category }}">
-          {{ message }}
-        </div>
-      {% endfor %}
-    </div>
-    <script>
-      // Remove flash after 4s
-      setTimeout(() => {
-        const flash = document.querySelector('.flash-container');
-        if (flash) flash.remove();
-      }, 4000);
-    </script>
-  {% endif %}
-{% endwith %}
 
 <div class="container">
-    <h2>Select Absent Teacher</h2>
+    <h2>Assign Substitutes for {{ absent_teacher }} on {{ selected_date }}</h2>
 
-    <form method="POST" action="{{ url_for('select_absent_teacher') }}">
-        <label for="absent_teacher">Absent Teacher:</label>
-        <select id="absent_teacher" name="absent_teacher">
-            {% for teacher in teacher_list %}
-                <option value="{{ teacher }}">{{ teacher }}</option>
-            {% endfor %}
-        </select>
+    <form method="POST" action="{{ url_for('assign_substitutes') }}">
+        {% for period, teachers in free_teachers_by_period.items() %}
+            <div class="period-row">
+                <label>Period {{ period }}:</label>
+                <select name="period{{ period }}">
+                    <option>-- Select Substitute --</option>
+                    {% for teacher in teachers %}
+                        <option value="{{ teacher }}">{{ teacher }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+        {% endfor %}
 
-
-            <label>
-        <input type="checkbox" id="confirm_teacher" name="confirm_teacher" required>
-        Confirm Teacher
-    </label>
-    
-        <label for="date">Select Date:</label>
-        <input type="date" id="date" name="date" required>
-
-        <button type="submit">Confirm</button>
+        <button type="submit" name="send_emails">Send Email</button>
     </form>
+
 </div>
 </body>
 </html>
